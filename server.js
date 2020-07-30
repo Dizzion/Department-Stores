@@ -9,7 +9,7 @@ const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static('./' + '/public'))
-app.use('/Stores', storesRouter)
+app.use('/Store', storeRouter)
 
 // set view engine
 app.set('view engine', 'ejs')
