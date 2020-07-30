@@ -12,3 +12,14 @@ One Store
 ---multiples departments
 --each department will have a list of items
 
+Home Page
+--Nav Bar
+----Home
+----user sign up and login option
+----department button that will redirect you to the department that you were at
+--Body
+---A list of the department
+--Footer
+---basic nav
+---comment section
+
