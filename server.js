@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 require('./db/db')
 const bodyParser = require('body-parser')
-const storeRouter = require('./routes/stores')
+const storeRouter = require('./routes/store')
 const methodOverride = require('method-override')
 
 // middleware
