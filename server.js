@@ -2,14 +2,14 @@ const express = require('express')
 const app = express()
 require('./db/db')
 const bodyParser = require('body-parser')
-const storeRouter = require('./routes/stores')
+const storeRouter = require('./routes/store')
 const methodOverride = require('method-override')
 
 // middleware
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static('./' + '/public'))
-app.use('/Stores', storesRouter)
+app.use('/Store', storeRouter)
 
 // set view engine
 app.set('view engine', 'ejs')
