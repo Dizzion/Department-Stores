@@ -9,14 +9,20 @@ router.get('/', (req, res) => {
 })
 
 // Department Sub Pages
-// deptCtrl
+// deptCtrl -- Sam's Section
 
 
 // Product Sub Pages
-// prodCtrl
+// prodCtrl -- Alex's Section
+
+
+// Comment Sub Pages
+// commentCtrl -- Alex's Section
 
 
 // User Sub Pages
-// userCtrl
+// userCtrl -- Alex's Section
+
+
 
 module.exports = router
