@@ -9,8 +9,14 @@ router.get('/', (req, res) => {
 })
 
 // Department Sub Pages
-// deptCtrl -- Sam's Section
-
+// deptCtrl -- Alex's Section
+router.get('/Depts/', deptCtrl.indexDepts)
+router.get('/Depts/new', deptCtrl.newDepts)
+router.get('/Depts/:id', deptCtrl.showDepts)
+router.get('/Depts/:id/edit', deptCtrl.editDepts)
+router.post('/Depts/', deptCtrl.addDepts)
+router.delete('/Depts/:id', deptCtrl.deleteDepts)
+router.put('/Depts/:id', deptCtrl.updateDepts)
 
 // Product Sub Pages
 // prodCtrl -- Alex's Section
