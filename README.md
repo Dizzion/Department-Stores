@@ -24,3 +24,5 @@ Home Page
 ---comment section
 
 [User Story](https://trello.com/b/p3yzHCNL)
+
+![DatabaseStructure](public/Images/StoreDBstructure.jpeg)
