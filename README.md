@@ -24,3 +24,15 @@ Home Page
 ---comment section
 
 [User Story](https://trello.com/b/p3yzHCNL)
+
+
+## Base MVP DB
+![DatabaseStructureV1](public/Images/StoreDBstructureV1.jpeg)
+
+
+## Extended MVP DB
+![DatabaseStructureV2](public/Images/StoreDBstructureV2.jpeg)
+
+
+## Further Extended DB
+![DatabaseStructureV3](public/Images/StoreDBstructureV3.jpeg)
