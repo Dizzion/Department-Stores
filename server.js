@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 require('./db/db')
-import { secret } from "./db/db";
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const storeRouter = require('./routes/store')
@@ -9,7 +8,7 @@ const methodOverride = require('method-override')
 
 // middleware
 app.use(session({
-    secret: secret,
+    secret: "ShhItsSecretGuys",
     resave: false,
     saveUninitialized: false
 }))
