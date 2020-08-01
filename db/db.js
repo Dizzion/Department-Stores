@@ -2,8 +2,6 @@ const mongoose = require('mongoose')
 // create and use Stores database
 const connectionString = 'mongodb://localhost/Stores'
 
-export const secret = "ShhItsSecretGuys"
-
 mongoose.connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
