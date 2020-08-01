@@ -35,8 +35,7 @@ function showProducts(req, res) {
             } else {
                 res.render('Products/show', {
                     dept: foundDept,
-                    products: foundDept.products[0],
-                    comments: foundDept.products[0].comments
+                    products: foundDept.products[0]
                 })
             }
         })
