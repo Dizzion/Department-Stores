@@ -50,7 +50,7 @@ function deleteDepts(req, res) {
         if(err) {
             res.send(err)
         } else {
-            Product.remove({
+            Product.deleteOne({
                 _id: {
                     $in: deletedDept.products
                 }
@@ -66,14 +66,14 @@ function editDepts(req, res) {
         res.render(
             'Departments/edit',
             {
-                Depts: foundDept
+                Dept: foundDept
             }
         )
     })
 }
 // update a Dept in the database from the updated info
 function updateDepts(req, res) {
-    Depts.findByIdAndUpdate(req.params.id, req.body, (err, updatedDept) => {
+    Depts.findByIdAndUpdate(req.params.id, req.main, (err, updatedDept) => {
         res.redirect('/Store/Depts')
     })
 }
