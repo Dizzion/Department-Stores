@@ -22,7 +22,7 @@ function indexProds(req, res) {
     })
 }
 // show Product indivdualy
-function showProducts(req, res) {
+function showProds(req, res) {
     Depts.findOne({'products': req.params.id})
         .populate(
             {

@@ -21,14 +21,13 @@ router.put('/Depts/:id', deptCtrl.updateDepts)
 
 // Product Sub Pages  ||  Comment Routes within
 // prodCtrl -- Alex's Section
-router.get('/Products/', prodCtrl.indexProds,)
+router.get('/Products/', prodCtrl.indexProds)
 router.get('/Products/new', prodCtrl.newProds)
-router.get('/Products/:id', prodCtrl.showProds, commCtrl.indexComms, commCtrl.editComms)
+router.get('/Products/:id', prodCtrl.showProds)
 router.get('/Products/:id/edit', prodCtrl.editProds)
 router.post('/Products/', prodCtrl.addProds)
-router.post('/Products/:id', commCtrl.addComms)
-router.delete('/Products/:id', prodCtrl.deleteProds, commCtrl.deleteComms)
-router.put('/Products/:id', prodCtrl.updateProds, commCtrl.updateComms)
+router.delete('/Products/:id', prodCtrl.deleteProds)
+router.put('/Products/:id', prodCtrl.updateProds)
 
 
 
