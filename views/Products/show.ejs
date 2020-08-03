@@ -1,13 +1,15 @@
 <main>
     <h1>Welcome to Product Info</h1>
     <section>
-        <h3>Products</h3>
-        <ul>
-            <% Dept.products.forEach(product => { %>
-            <li>
-                <a href="/Store/Products/<%=product._id %>"><%= product.name %></a>
-            </li>
-            <% }) %>
-        </ul>
+        <h3><%=products.name%></h3>
+        <div>
+            <%= products.manufacturer %> is the manufacturer of this product.<br />
+            The Price of <%= products.name %> is <%= products.price %>. <br />
+            <% if (products.inStock === true) { %>
+                <%= products.name %> is instock and available to buy. 
+            <% } else { %>
+                <%= products.name %> is Not available to buy.
+            <% } %> <br/> 
+        </div>
     </section>
 </main>
