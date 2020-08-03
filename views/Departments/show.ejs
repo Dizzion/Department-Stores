@@ -1,14 +1,30 @@
+<<<<<<< HEAD
+    <h1>Welcome to Department Stores</h1>
+=======
 <main>
     <h1>Welcome to <%=Dept.name%> Department</h1>
     <h2>This Department Sells <%=Dept.productType%> Products</h2>
+>>>>>>> submaster
     <section>
         <h3>Products</h3>
         <ul>
             <% Dept.products.forEach(product => { %>
+<<<<<<< HEAD
+                <li>
+                    <a href="/Store/Products/<%=product._id %>"><%= product.name %></a> <br/>
+                   
+                </li>
+=======
             <li>
                 <a href="/Store/Products/<%=product._id %>"><%= product.name %></a>
             </li>
+>>>>>>> submaster
             <% }) %>
         </ul>
+        <a href="/Store/Depts/<%=Dept._id %>/edit">Edit Department Info</a>
+        <form action="/Store/Depts/<%=Dept._id%>?_method=DELETE" method="POST"><input type="submit" value="delete department"></form>
     </section>
+<<<<<<< HEAD
+=======
 </main>
+>>>>>>> submaster
