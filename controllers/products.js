@@ -50,6 +50,11 @@ function newProds(req, res) {
 }
 //  add a new Product to the database
 function addProds(req, res) {
+    if (req.body.inStock === 'on') {
+        req.body.inStock = true
+    } else {
+        req.body.inStock = false
+    }
     Products.create(req.body, (err, addedProduct) => {
         if(err) {
             res.send(err);
