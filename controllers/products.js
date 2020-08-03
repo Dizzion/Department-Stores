@@ -6,7 +6,7 @@ const Comments = require('../modules/comments')
 // export all functionality to router
 module.exports = {
     indexProds,
-    showProds,
+    // showProds,
     newProds,
     addProds,
     deleteProds,
