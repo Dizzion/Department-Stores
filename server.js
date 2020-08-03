@@ -11,7 +11,6 @@ const ejsLayouts = require('express-ejs-layouts');
 // middleware
 app.set('view engine', 'ejs')
 app.use(ejsLayouts);
-
 app.use(session({
     secret: "ShhItsSecretGuys",
     resave: false,
@@ -22,11 +21,6 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static('./' + '/public'))
 app.use('/Store', storeRouter)
 
-// set view engine
-
-// app.get('/', (req, res) => {
-//     res.render('home')
-// })
 
 // listen on port 3000
 app.listen(3000, () => {
