@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script src="../../controllers/comments.js" async defer></script>
-</body>
-</html>
+<main>
+    <h1>Welcome to Product Info</h1>
+    <section>
+        <h3>Products</h3>
+        <ul>
+            <% Dept.products.forEach(product => { %>
+            <li>
+                <a href="/Store/Products/<%=product._id %>"><%= product.name %></a>
+            </li>
+            <% }) %>
+        </ul>
+    </section>
+</main>
