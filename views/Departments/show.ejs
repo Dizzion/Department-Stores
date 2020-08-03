@@ -6,6 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Welcome to Department Stores</h1>
+    <section>
+        <h3>Products</h3>
+        <ul>
+            <% Dept.products.forEach(product => { %>
+                <li>
+                    <a href="/Store/Products/<%=product._id %>"><%= product.name %></a>
+                </li>
+            <% }) %>
+        </ul>
+    </section>
 </body>
 </html>
