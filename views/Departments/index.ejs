@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+
+<div class="Departments">
+    <h3>List of all the department</h3>
+    <% Dept.forEach(departments => { %>
+        <li>
+            <a href="/Store/Depts/<%= departments._id%>"> <%= departments.name %>  </a>
+        </li>
+    <% }) %>
+    <!-- will add ejs codding that shows the list of department -->
+</div>
+<div>
+    <a href="/Store/Depts/new">Add New Departments</a>
+</div>
