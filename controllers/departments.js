@@ -39,7 +39,7 @@ function newDepts(req, res) {
     res.render('Departments/new')
 }
 //  add a new dept to the database
-function addDept(req, res) {
+function addDepts(req, res) {
     Depts.create(req.body, (err, addedDept) => {
         res.redirect('/Store/Depts')
     })
