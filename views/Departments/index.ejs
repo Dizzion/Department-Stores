@@ -3,7 +3,8 @@
         <h3>List of all Departments</h3>
         <p>
         <% Dept.forEach(departments => { %>
-            Name: <a href="/Store/Depts/<%= departments._id%>"> <%= departments.name %> </a>
+            Name: <a href="/Store/Depts/<%= departments._id%>"> <%= departments.name %> </a> <br />
+            Type of Product: <%= departments.productType %> 
         </p>
         <% }) %>
     </div>
