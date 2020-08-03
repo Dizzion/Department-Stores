@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Welcome to Department Stores</h1>
+<main>
+    <h1>Welcome to <%=Dept.name%> Department</h1>
+    <h2>This Department Sells <%=Dept.productType%> Products</h2>
     <section>
         <h3>Products</h3>
         <ul>
             <% Dept.products.forEach(product => { %>
-                <li>
-                    <a href="/Store/Products/<%=product._id %>"><%= product.name %></a>
-                </li>
+            <li>
+                <a href="/Store/Products/<%=product._id %>"><%= product.name %></a>
+            </li>
             <% }) %>
         </ul>
     </section>
-</body>
-</html>
+</main>
