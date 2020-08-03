@@ -5,7 +5,7 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const storeRouter = require('./routes/store')
 const methodOverride = require('method-override')
-const ejsLayouts = require('express-ejs-layouts');
+const ejsLayouts = require('express-ejs-layouts')
 
 
 // middleware
@@ -17,7 +17,7 @@ app.use(session({
     saveUninitialized: false
 }))
 app.use(methodOverride('_method'))
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static('./' + '/public'))
 app.use('/Store', storeRouter)
 
