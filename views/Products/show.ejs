@@ -1,5 +1,5 @@
 <main>
-    <h3>Welcome to Product Info</h3>
+    <h1>Welcome to Product Info</h1>
     <section>
         <h2><%=products.name%></h3>
         <h4>This Product is part of <a href="/Store/Depts/<%=dept._id%>"><%=dept.name%></a> Department</h5>
@@ -12,8 +12,25 @@
                 <%= products.name %> is Not available to buy.
             <% } %> <br/> 
         </div>
-        <a href="/Store/Products/<%=products._id %>/edit">Edit Product Info</a>
-        <form action="/Store/Products/<%=products._id%>?_method=DELETE" method="POST"><input type="submit"
-                value="delete department"></form>
+        <div>
+            <a href="/Store/Products/<%=products._id%>/edit">Edit this Product</a>
+            <form action="/Store/Products/<%=products._id%>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete Product"/>
+            </form>
+        </div>
+        <form action="/Store/Products/<%=products._id%>" method="POST">
+            <input type="text" name="title" required/><br />
+            <textarea name="body" placeholder="Add Comment Here" cols="30" rows="10"></textarea><br />
+            <input type="submit" name="" value="Add Comment"/>
+        </form>
+        <div>
+            <% products.comments.forEach(comment => { %>
+                <p><strong><%=comment.title%></strong></p>
+                <p><%=comment.body%></p><a href="/Store/Comments/<%=comment._id%>/edit">Edit Comment</a>
+                <form action="/Store/Comments/<%=comment._id%>?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete Comment"/>
+                </form>
+            <% }) %>
+        </div>
     </section>
 </main>

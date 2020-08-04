@@ -1,18 +1,24 @@
 <main>
-    <h3>Edit Your Product</h3>
-    <form action="/Store/Products/ <%=products._id%>?_method=PUT" method="POST">
-        <select name="deptId" >
-            <% depts.forEach(department => { %>
-             <option value="<%= department._id %> "><%= department.name %> </option>
+    <h3>Edit <%=products.name%></h3>
+    <form action="/Store/Products/<%=products._id%>?_method=PUT" method="POST">
+        <select name="deptId">
+            <% depts.forEach(dept => { %>
+                <option value="<%=dept._id%>"
+                    <% if (dept._id.toString() === ProductDept._id.toString()) { %>
+                        selected
+                    <% } %> 
+                >
+                <%=dept.name%>    
+                </option>
             <% }) %>
         </select>
-        Name: <input type="text" name="name" required> <br />
-        Manufacturer: <input type="text" name="manufacturer" required> <br />
-        Price: <input type="text" name="price" required>
-        In Stock: <input type="checkbox" name="inStock"
+        Name: <input type="text" name="name" value="<%=products.name%>" required/><br />
+        Manufacturer: <input type="text" name="manufacturer" value="<%=products.manufacturer%>" required><br />
+        Price: <input type="text" name="price" value="<%=products.price%>" required><br />
+        In Stock? <input type="checkbox" name="inStock"
             <% if (products.inStock === true) { %>
-            <%= products.name %> is instock and available to buy.
-            <% } %> >
-        <input type="submit" value="Update Product">
+                checked
+            <% } %>/><br />
+        <input type="submit" name="" value="Submit Changes to this Product"/>
     </form>
 </main>
