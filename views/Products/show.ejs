@@ -26,7 +26,7 @@
         <div>
             <% products.comments.forEach(comment => { %>
                 <p><strong><%=comment.title%></strong></p>
-                <p><%=comment.body%></p>
+                <p><%=comment.body%></p><a href="/Store/Comments/<%=comment._id%>/edit">Edit Comment</a>
                 <form action="/Store/Comments/<%=comment._id%>?_method=DELETE" method="POST">
                     <input type="submit" value="Delete Comment"/>
                 </form>

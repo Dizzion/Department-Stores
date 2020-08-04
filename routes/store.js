@@ -30,6 +30,8 @@ router.post('/Products/', prodCtrl.addProds)
 router.delete('/Products/:id', prodCtrl.deleteProds)
 router.put('/Products/:id', prodCtrl.updateProds)
 router.delete('/Comments/:id', commCtrl.deleteComms)
+router.get('/Comments/:id/edit', commCtrl.editComms)
+router.put('/Comments/:id', commCtrl.updateComms)
 
 
 
