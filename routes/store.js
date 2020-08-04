@@ -24,10 +24,14 @@ router.put('/Depts/:id', deptCtrl.updateDepts)
 router.get('/Products/', prodCtrl.indexProds)
 router.get('/Products/new', prodCtrl.newProds)
 router.get('/Products/:id', prodCtrl.showProds)
+router.post('/Products/:id', commCtrl.addComms)
 router.get('/Products/:id/edit', prodCtrl.editProds)
 router.post('/Products/', prodCtrl.addProds)
 router.delete('/Products/:id', prodCtrl.deleteProds)
 router.put('/Products/:id', prodCtrl.updateProds)
+router.delete('/Comments/:id', commCtrl.deleteComms)
+router.get('/Comments/:id/edit', commCtrl.editComms)
+router.put('/Comments/:id', commCtrl.updateComms)
 
 
 

@@ -1,9 +1,9 @@
 <main>
-    <form action="/Store/Depts/ <%=Depts._id %>?_method=PUT" method="POST">
-    <input type="text" name="name" value= "<%=Depts.name %>" required> <br/>
-    <input type="text" name="productType" value= "<%= Depts.productType %>" required> <br/>
+    <form action="/Store/Depts/<%=Dept._id%>?_method=PUT" method="POST">
+        <input type="text" name="name" value="<%=Dept.name%>" required> <br />
+        <input type="text" name="productType" value="<%= Dept.productType%>" required> <br />
 
-    <input type="submit" value ="Update Department"/>
+        <input type="submit" name="" value="Update Department" />
     </form>
 
 </main>
