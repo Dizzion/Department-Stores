@@ -23,6 +23,7 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/Store', storeRouter)
 
 
+
 // listen on port 3000
 app.listen(3000, () => {
     console.log('Up and Ready to Shop')
