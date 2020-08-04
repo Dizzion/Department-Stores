@@ -4,6 +4,8 @@ const deptCtrl = require('../controllers/departments')
 const prodCtrl = require('../controllers/products')
 const userCtrl = require('../controllers/User')
 const commCtrl = require('../controllers/comments')
+const sessionCtrl = require('../controllers/sessions')
+
 
 router.get('/', (req, res) => {
     res.render('home')
@@ -37,6 +39,8 @@ router.put('/Comments/:id', commCtrl.updateComms)
 
 // User Sub Pages
 // userCtrl -- Alex's Section
+router.post('/', sessionCtrl.login)
+router.get('/', sessionCtrl.logout)
 
 
 
