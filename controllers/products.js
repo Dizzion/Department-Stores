@@ -23,20 +23,24 @@ function indexProds(req, res) {
 }
 // show Product indivdualy
 function showProds(req, res) {
-    Depts.findOne({'products': req.params.id})
+    Depts.findOne({ 'products': req.params.id })
         .populate(
             {
                 path: 'products',
-                match: {_id: req.params.id}
+                match: { _id: req.params.id }
             })
         .exec((err, foundDept) => {
             if (err) {
                 res.send(err)
             } else {
-                res.render('Products/show', {
-                    dept: foundDept,
-                    products: foundDept.products[0]
-                })
+                Products.findOne({ _id: foundDept.products[0]._id })
+                    .populate({ path: 'comments' })
+                    .exec((err, foundProduct) => {
+                        res.render('Products/show', {
+                            dept: foundDept,
+                            products: foundProduct
+                        })
+                    })
             }
         })
 }
@@ -50,12 +54,17 @@ function newProds(req, res) {
 }
 //  add a new Product to the database
 function addProds(req, res) {
+    if (req.body.inStock === 'on') {
+        req.body.inStock = true
+    } else {
+        req.body.inStock = false
+    }
     Products.create(req.body, (err, addedProduct) => {
-        if(err) {
-            res.send(err);
+        if (err) {
+            res.send(err)
         } else {
-            Dept.findById(req.body.deptId, (err, foundDept) => {
-                foundDept.Products.push(addedProduct)
+            Depts.findById(req.body.deptId, (err, foundDept) => {
+                foundDept.products.push(addedProduct)
                 foundDept.save((err, addedProduct) => {
                     res.redirect('/Store/Products')
                 })
@@ -65,13 +74,18 @@ function addProds(req, res) {
 }
 // delete a Product from the database
 function deleteProds(req, res) {
-    Product.findByIdAndRemove(req.params.id, (err, deletedProduct) => {
-        if(err) {
+    Depts.findOne({ 'products': req.params.id}, (err, foundDept) => {
+        let pos = foundDept.products.indexOf(req.params.id)
+        foundDept.products.splice(pos, 1)
+        foundDept.save()
+    })
+    Products.findByIdAndRemove(req.params.id, (err, deletedProduct) => {
+        if (err) {
             res.send(err)
         } else {
-            Comments.remove({
+            Comments.deleteMany({
                 _id: {
-                    $in: deletedProd.comments
+                    $in: deletedProduct.comments
                 }
             }, (err, data) => {
                 res.redirect('/Store/Depts')
@@ -82,30 +96,35 @@ function deleteProds(req, res) {
 // edit a Product in the database
 function editProds(req, res) {
     Depts.find({}, (err, allDepts) => {
-        Depts.findOne({'products': req.params.id})
-        .populate({path: 'products', match: {_id: req.params.id}})
-        .exec((err, foundProductDept) => {
-            if(err) {
-                res.send(err)
-            }else {
-                res.render('Products/edit', {
-                    products: foundProductDept.Products[0],
-                    depts: allDepts,
-                    ProductDept: foundProductDept
-                })
-            }
-        })
+        Depts.findOne({ 'products': req.params.id })
+            .populate({ path: 'products', match: { _id: req.params.id } })
+            .exec((err, foundProductDept) => {
+                if (err) {
+                    res.send(err)
+                } else {
+                    res.render('Products/edit', {
+                        products: foundProductDept.products[0],
+                        depts: allDepts,
+                        ProductDept: foundProductDept
+                    })
+                }
+            })
     })
 }
 // update a Product in the database from the updated info
 function updateProds(req, res) {
+    if (req.body.inStock === 'on') {
+        req.body.inStock = true
+    } else {
+        req.body.inStock = false
+    }
     Products.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedProduct) => {
-        Depts.findOne({'products': req.params.id}, (err, foundDept) => {
-            if(foundDept._id.toString() !== req.body.deptId) {
+        Depts.findOne({ 'products': req.params.id }, (err, foundDept) => {
+            if (foundDept._id.toString() !== req.body.deptId) {
                 foundDept.Products.deleteOne(req.params.id)
                 foundDept.save((err, savedFoundDept) => {
                     Dept.findById(req.body.deptId, (err, newDept) => {
-                        newDept.Products.push(updatedProduct)
+                        newDept.products.push(updatedProduct)
                         newDept.save((err, savedNewDept) => {
                             res.redirect('/Store/Products')
                         })

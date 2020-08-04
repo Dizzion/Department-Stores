@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<main>
+    <h3>Please Fill out the Form to add your Product to your Department</h3>
+    <form action="/Store/Products/" method="post">
+        <select name="deptId">
+            <% depts.forEach(department => { %>
+             <option value="<%= department._id %>"><%= department.name %> </option>
+            <% }) %>
+        </select>
+        Name: <input type="text" name="name" required> <br />
+        Manufacturer: <input type="text" name="manufacturer" required> <br />
+        Price: <input type="text" name="price" required>
+        In Stock: <input type="checkbox" name="inStock">
+        <input type="submit" value="Add Product">
+    </form>
+</main>

@@ -1,11 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<main>
+    <h3>Edit <%=products.name%></h3>
+    <form action="/Store/Products/<%=products._id%>?_method=PUT" method="POST">
+        <select name="deptId">
+            <% depts.forEach(dept => { %>
+                <option value="<%=dept._id%>"
+                    <% if (dept._id.toString() === ProductDept._id.toString()) { %>
+                        selected
+                    <% } %> 
+                >
+                <%=dept.name%>    
+                </option>
+            <% }) %>
+        </select>
+        Name: <input type="text" name="name" value="<%=products.name%>" required/><br />
+        Manufacturer: <input type="text" name="manufacturer" value="<%=products.manufacturer%>" required><br />
+        Price: <input type="text" name="price" value="<%=products.price%>" required><br />
+        In Stock? <input type="checkbox" name="inStock"
+            <% if (products.inStock === true) { %>
+                checked
+            <% } %>/><br />
+        <input type="submit" name="" value="Submit Changes to this Product"/>
+    </form>
+</main>
