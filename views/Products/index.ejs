@@ -1,11 +1,11 @@
-<main>
-    <h3>List of all Departments</h3>
+<main class="indexpage">
+    <h3>List of all the Products</h3>
         <p>
         <% products.forEach(products => { %>
             <a href="/Store/Products/<%= products._id%>"> <%= products.name %> </a> <br />
         </p>
         <% }) %>
     <div>
-        <a href="/Store/Products/new">Add your Product</a>
+        <a href="/Store/Products/new">Add New Product</a>
     </div>
 </main>

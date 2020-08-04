@@ -9,3 +9,35 @@ h1 {
 #signUp {
   float: right;
 }
+
+.showpage {
+  margin: 1em;
+}
+
+.homepage {
+  margin: 1em;
+}
+
+.indexpage {
+  margin: 1em;
+}
+.producteditpage {
+  margin: 1em;
+}
+.newproductpage {
+  margin: 1em;
+}
+.editDept {
+  margin: 1em;
+}
+.indexDept {
+  margin: 1em;
+}
+
+.newDept {
+  margin: 1em;
+}
+
+.showDept {
+  margin: 1em;
+}
