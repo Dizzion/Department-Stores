@@ -38,7 +38,18 @@ h1 {
 
 .showDept {
   margin: 1em; }
-
+.edituserpage {
+  margin: 1em;
+}
+.indexuserpage {
+  margin: 1em;
+}
+.newuserpage {
+  margin: 1em;
+}
+.showuserpage {
+  margin: 1em;
+}
 #navbarText {
   display: flex;
   justify-content: space-between; }
