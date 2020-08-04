@@ -14,11 +14,7 @@ module.exports = {
 }
 
 function indexUser (req, res) {
-    User.find({}, (err, allUsers) => {
-        res.render('User/index', {
-            users: allUsers
-        })
-    })
+    res.render('User/index')
 }
 
 
@@ -42,6 +38,10 @@ function newUser (req, res) {
 
 function addUser (req, res) {
     User.create(req.body, (err, addedUser) => {
+        res.render('layout', {
+            userId: addedUser._id
+        })
+        req.session.loggedIn = true
         res.redirect('/Store')
     })
 }
