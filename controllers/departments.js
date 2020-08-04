@@ -50,7 +50,7 @@ function deleteDepts(req, res) {
         if(err) {
             res.send(err)
         } else {
-            Product.remove({
+            Product.deleteOne({
                 _id: {
                     $in: deletedDept.products
                 }
@@ -66,7 +66,7 @@ function editDepts(req, res) {
         res.render(
             'Departments/edit',
             {
-                Depts: foundDept
+                Dept: foundDept
             }
         )
     })

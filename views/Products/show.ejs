@@ -1,7 +1,8 @@
 <main>
     <h1>Welcome to Product Info</h1>
     <section>
-        <h3><%=products.name%></h3>
+        <h2><%=products.name%></h3>
+        <h4>This Product is part of <a href="/Store/Depts/<%=dept._id%>"><%=dept.name%></a> Department</h5>
         <div>
             <%= products.manufacturer %> is the manufacturer of this product.<br />
             The Price of <%= products.name %> is <%= products.price %>. <br />

@@ -57,10 +57,10 @@ function addProds(req, res) {
     }
     Products.create(req.body, (err, addedProduct) => {
         if(err) {
-            res.send(err);
+            res.send(err)
         } else {
-            Dept.findById(req.body.deptId, (err, foundDept) => {
-                foundDept.Products.push(addedProduct)
+            Depts.findById(req.body.deptId, (err, foundDept) => {
+                foundDept.products.push(addedProduct)
                 foundDept.save((err, addedProduct) => {
                     res.redirect('/Store/Products')
                 })
