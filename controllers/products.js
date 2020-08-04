@@ -59,7 +59,7 @@ function addProds(req, res) {
         if(err) {
             res.send(err);
         } else {
-            Dept.findById(req.body.deptId, (err, foundDept) => {
+            Depts.findById(req.body.deptId, (err, foundDept) => {
                 foundDept.Products.push(addedProduct)
                 foundDept.save((err, addedProduct) => {
                     res.redirect('/Store/Products')
