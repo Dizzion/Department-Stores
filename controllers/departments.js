@@ -73,7 +73,7 @@ function editDepts(req, res) {
 }
 // update a Dept in the database from the updated info
 function updateDepts(req, res) {
-    Depts.findByIdAndUpdate(req.params.id, req.main, (err, updatedDept) => {
+    Depts.findByIdAndUpdate(req.params.id, req.body, (err, updatedDept) => {
         res.redirect('/Store/Depts')
     })
 }
