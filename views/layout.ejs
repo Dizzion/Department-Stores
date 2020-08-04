@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <title>Department Store</title>
 </head>
-
 <body>
-    <h1>Welcome to the Department Store</h1>
-    <nav>
-        <ul>
-            <li><a href="/Store">Home</a></li>
-            <li><a href="/Store/Depts/">Departments</a></li>
-            <li><a href="/Store/Products/">Products</a></li>
-            <li style="float:right"><a class="active" href="#about">Login or Sign Up</a></li>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <h1>Welcome to the Department Store</h1>
+        <p>The one Place for all your business need</p> 
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-light">
+        
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/Store">Home</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Store/Depts/">Departments</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Store/Products/">Products</a></li>
         </ul>
+        <!-- I need to figure out how to move the sign up to the far right -->
+        <a id="signUp" class="nav-link" class="active" href="#about">Login or Sign Up</a>
     </nav>
     <%- body %>
 </body>
-
 </html>

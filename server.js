@@ -19,6 +19,7 @@ app.use(session({
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static('./' + '/public'))
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/Store', storeRouter)
 
 
