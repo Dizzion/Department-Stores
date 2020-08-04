@@ -20,7 +20,7 @@
         </div>
         <form action="/Store/Products/<%=products._id%>" method="POST">
             <input type="text" name="title" required/><br />
-            <input type="text" name="body" required/><br />
+            <textarea name="body" placeholder="Add Comment Here" cols="30" rows="10"></textarea><br />
             <input type="submit" name="" value="Add Comment"/>
         </form>
         <div>
