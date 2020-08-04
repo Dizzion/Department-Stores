@@ -113,13 +113,18 @@ function editProds(req, res) {
 }
 // update a Product in the database from the updated info
 function updateProds(req, res) {
+    if (req.body.inStock === 'on') {
+        req.body.inStock = true
+    } else {
+        req.body.inStock = false
+    }
     Products.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedProduct) => {
         Depts.findOne({ 'products': req.params.id }, (err, foundDept) => {
             if (foundDept._id.toString() !== req.body.deptId) {
                 foundDept.Products.deleteOne(req.params.id)
                 foundDept.save((err, savedFoundDept) => {
                     Dept.findById(req.body.deptId, (err, newDept) => {
-                        newDept.Products.push(updatedProduct)
+                        newDept.products.push(updatedProduct)
                         newDept.save((err, savedNewDept) => {
                             res.redirect('/Store/Products')
                         })
