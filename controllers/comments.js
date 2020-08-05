@@ -28,38 +28,46 @@ function addComms(req, res) {
 
 // Delete Comment from Product show pages
 function deleteComms(req, res) {
-    Comments.findByIdAndDelete(req.body.commentId, (err, data) => {
-        Products.findOne({ 'comments': req.params.id }, (err, foundProduct) => {
-            let pos = foundProduct.comments.indexOf(req.params.id)
-            foundProduct.comments.splice(pos, 1)
-            foundProduct.save()
-            res.redirect('/Store/Products/' + foundProduct._id)
+    if (req.session.loggedIn) {
+        Comments.findByIdAndDelete(req.body.commentId, (err, data) => {
+            Products.findOne({ 'comments': req.params.id }, (err, foundProduct) => {
+                let pos = foundProduct.comments.indexOf(req.params.id)
+                foundProduct.comments.splice(pos, 1)
+                foundProduct.save()
+                res.redirect('/Store/Products/' + foundProduct._id)
+            })
         })
-    })
+    } else {
+        res.redirect('/Store/Users')
+    }
 }
 
 // enable Editing on comments nest on forms on the page
 function editComms(req, res) {
-    Products.find({}, (err, allProducts) => {
-        Products.findOne({ 'comments': req.params.id })
-            .populate({ path: 'comments', match: { _id: req.params.id } })
-            .exec((err, foundCommentProd) => {
-                if (err) {
-                    res.send(err)
-                } else {
-                    res.render('Comments/edit', {
-                        comment: foundCommentProd.comments[0]
-                    })
-                }
-            })
-    })
+    if (req.session.loggedIn) {
+        Products.find({}, (err, allProducts) => {
+            Products.findOne({ 'comments': req.params.id })
+                .populate({ path: 'comments', match: { _id: req.params.id } })
+                .exec((err, foundCommentProd) => {
+                    if (err) {
+                        res.send(err)
+                    } else {
+                        res.render('Comments/edit', {
+                            comment: foundCommentProd.comments[0]
+                        })
+                    }
+                })
+        })
+    } else {
+        res.redirect('/Store/Users')
+    }
 }
 
 // update and turn Comment Form Ready Only
 function updateComms(req, res) {
     Products.findOne({ 'comments': req.params.id }, (err, foundProduct) => {
         Comments.findByIdAndUpdate(req.params.id, req.body, () => {
-            res.redirect('/Store/Products/'+foundProduct._id)
+            res.redirect('/Store/Products/' + foundProduct._id)
         })
     })
 }

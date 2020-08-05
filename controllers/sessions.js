@@ -1,4 +1,3 @@
-const express = require('express')
 const User = require("../modules/User")
 
 module.exports = {
@@ -7,11 +6,11 @@ module.exports = {
 }
 
 function login(req, res) {
-    User.find({ 'username': req.body.username }, (err, foundUser) => {
+    User.findOne({ 'username': req.body.username }, (err, foundUser) => {
         if (req.body.password !== foundUser.password) {
-            res.redirect('/Store')
+            return res.redirect('/Store/Users')
         } else {
-            req.session.username = req.body.username
+            req.session.username = foundUser.username
             req.session.loggedIn = true
             res.redirect('/Store')
         }

@@ -38,11 +38,9 @@ function newUser (req, res) {
 
 function addUser (req, res) {
     User.create(req.body, (err, addedUser) => {
-        res.render('layout', {
-            userId: addedUser._id
-        })
+        req.session.user = addedUser._id
         req.session.loggedIn = true
-        res.redirect('/Store')
+        res.redirect('/Store/Users')
     })
 }
 
