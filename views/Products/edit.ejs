@@ -13,8 +13,9 @@
             <% }) %>
         </select> <br />
         Name: <input type="text" name="name" value="<%=products.name%>" required/><br />
-        Manufacturer: <input type="text" name="manufacturer" value="<%=products.manufacturer%>" required><br />
-        Price: <input type="text" name="price" value="<%=products.price%>" required><br />
+        Manufacturer: <input type="text" name="manufacturer" value="<%=products.manufacturer%>" required/><br />
+        Price: <input type="text" name="price" value="<%=products.price%>" required/><br />
+        Image: <input type="text" name="img" value="<%=products.img%>" required/><br />
         In Stock? <input type="checkbox" name="inStock"
             <% if (products.inStock === true) { %>
                 checked

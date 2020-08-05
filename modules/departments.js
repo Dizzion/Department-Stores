@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const deptSchema = new mongoose.Schema({
     name: {type: String, required: true},
     productType: {type: String, required: true},
+    img: String,
     products: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Products'

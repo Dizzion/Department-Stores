@@ -8,9 +8,10 @@ module.exports = {
 function login(req, res) {
     User.findOne({ 'username': req.body.username }, (err, foundUser) => {
         if (req.body.password !== foundUser.password) {
-            return res.redirect('/Store/Users')
+            return res.send('<h1>Not a valid password or User Name</h1><br/><a href="/Store/Users">Back</a>')
         } else {
             req.session.username = foundUser.username
+            req.session.user = foundUser._id
             req.session.loggedIn = true
             res.redirect('/Store')
         }
