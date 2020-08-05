@@ -56,3 +56,6 @@ div {
 #navbarText {
   display: flex;
   justify-content: space-between; }
+#bottomnav {
+  margin-top: 0.5em;
+}
