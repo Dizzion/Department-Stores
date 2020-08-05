@@ -3,7 +3,7 @@
     <h5>This Department Sells <%= Dept.productType %> Products.</h5>
     <section>
         <h3>Products</h3>
-        <div class="container">
+        <div class="container-fluid row">
             <% Dept.products.forEach(product => { %>
                 <div class="card" style="width: 18rem;">
                     <img src="<%=product.img%>" class="card-img-top" alt="No Product Image">
@@ -14,9 +14,13 @@
                   </div><br />
             <% }) %>
         </div> <br />
-        <a href="/Store/Depts/<%=Dept._id %>/edit">Edit Department Info</a>
-        <form action="/Store/Depts/<%=Dept._id%>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete Department">
-        </form>
+        <div>
+            <a class="btn btn-warning" href="/Store/Depts/<%=Dept._id %>/edit">Edit Department Info</a>
+        </div>
+        <div>
+            <form action="/Store/Depts/<%=Dept._id%>?_method=DELETE" method="POST">
+                <input class="btn btn-danger" type="submit" value="Delete Department">
+            </form>
+        </div>
     </section>
 </main>

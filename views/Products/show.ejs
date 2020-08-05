@@ -16,18 +16,18 @@
             </p>
         </div>
         <div>
-            <a href="/Store/Products/<%=products._id%>/edit">Edit this Product</a>
+            <a class="btn btn-warning" href="/Store/Products/<%=products._id%>/edit">Edit this Product</a>
         </div>
         <div>
             <form action="/Store/Products/<%=products._id%>?_method=DELETE" method="POST">
-                <input type="submit" value="Delete Product"/>
+                <input class="btn btn-danger" type="submit" value="Delete Product"/>
             </form>
         </div>
         <div class="commentForm">
             <form action="/Store/Products/<%=products._id%>" method="POST">
                 Comment Title: <input type="text" name="title" required/><br />
                 <textarea name="body" placeholder="Add Comment Here" cols="30" rows="10"></textarea><br />
-               <input type="submit" name="" value="Add Comment"/>
+               <input class="btn btn-success" type="submit" name="" value="Add Comment"/>
             </form>
         </div>
         <div>
