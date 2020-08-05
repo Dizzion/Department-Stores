@@ -50,6 +50,9 @@ h1 {
 .showuserpage {
   margin: 1em;
 }
+div {
+  margin: 0.5em;
+}
 #navbarText {
   display: flex;
   justify-content: space-between; }
