@@ -9,8 +9,6 @@
         <%=comment.body%><br />
         <% }) %>
     </p>
-    <a href="/Stores/Users/<%=user._id%>/edit">Edit Your Account Information Here</a>
-    <form action="/Stores/Users/<%=user._id%>?_method=DELETE" method="POST">
-        <input type="submit" name="" value="Delete Your Account"/>
-    </form>
+    <a href="/Store/Users/<%=user._id%>/edit">Edit Your Account Information Here</a><br />
+    <a href="/Store/logout">Log Out</a>
 </main> 

@@ -2,21 +2,21 @@
 const User = require('../modules/User')
 const Comments = require('../modules/comments')
 
-
 module.exports = {
     indexUser,
     showUser,
     newUser,
     addUser,
     editUser,
-    deleteUser,
-    updateUser,
+    updateUser
 }
 
 function indexUser (req, res) {
+    if(req.session.loggedIn) {
+         return res.redirect('/Store/Users/'+req.session.user)
+    }
     res.render('User/index')
 }
-
 
 function showUser (req, res) {
     User.findById(req.params.id)
@@ -37,26 +37,14 @@ function newUser (req, res) {
 }
 
 function addUser (req, res) {
+    if (User.find({'username': req.body.username})) {
+        return res.send('<h1>User Name Already Exists</h1><br /><a href="/Store/Users/new">Back</a>')
+    }
     User.create(req.body, (err, addedUser) => {
         req.session.user = addedUser._id
+        req.session.username = addedUser.username
         req.session.loggedIn = true
-        res.redirect('/Store/Users')
-    })
-}
-
-function deleteUser (req, res) {
-    User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
-        if(err) {
-            res.send(err)
-        } else {
-            Comments.deleteMany({
-                _id: {
-                    $in: deletedUser.comments
-                }
-            }, (err, data) => {
-                res.render('/Store')
-            })
-        }
+        res.redirect('/Store')
     })
 }
 

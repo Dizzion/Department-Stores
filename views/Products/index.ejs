@@ -1,10 +1,16 @@
 <main class="indexpage">
     <h3>List of all the Products</h3>
-        <p>
-        <% products.forEach(products => { %>
-            <a href="/Store/Products/<%= products._id%>"> <%= products.name %> </a> <br />
-        </p>
-        <% }) %>
+    <div class="container">
+        <% products.forEach(product => { %>
+        <div class="card" style="width: 18rem;">
+            <img src="<%=product.img%>" class="card-img-top" alt="No Product Image">
+            <div class="card-body">
+                <h5 class="card-title"><%=product.name%></h5>
+                <a href="/Store/Products/<%=product._id%>" class="btn btn-primary">Go to Product</a>
+            </div>
+        </div><br />
+        <% }) %>    
+    </div>
     <div>
         <a href="/Store/Products/new">Add New Product</a>
     </div>

@@ -3,11 +3,17 @@
     <h5>This Department Sells <%= Dept.productType %> Products.</h5>
     <section>
         <h3>Products</h3>
-        <p>
+        <div class="container">
             <% Dept.products.forEach(product => { %>
-                <a href="/Store/Products/<%=product._id %>"><%= product.name %></a> <br />
+                <div class="card" style="width: 18rem;">
+                    <img src="<%=product.img%>" class="card-img-top" alt="No Product Image">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= product.name %></h5>
+                      <a href="/Store/Products/<%=product._id %>" class="btn btn-primary">Go To Product</a>
+                    </div>
+                  </div><br />
             <% }) %>
-        </p> <br />
+        </div> <br />
         <a href="/Store/Depts/<%=Dept._id %>/edit">Edit Department Info</a>
         <form action="/Store/Depts/<%=Dept._id%>?_method=DELETE" method="POST">
             <input type="submit" value="Delete Department">

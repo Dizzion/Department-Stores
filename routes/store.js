@@ -44,7 +44,6 @@ router.get('/Users/new', userCtrl.newUser)
 router.get('/Users/:id', userCtrl.showUser)
 router.get('/Users/:id/edit', userCtrl.editUser)
 router.post('/Login', userCtrl.addUser)
-router.delete('/Users/:id', userCtrl.deleteUser)
 router.put('/Users/:id', userCtrl.updateUser)
 
 

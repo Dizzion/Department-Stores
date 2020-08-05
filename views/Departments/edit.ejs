@@ -2,8 +2,8 @@
     <h3>Edit Your Department</h3>
     <form action="/Store/Depts/<%=Dept._id%>?_method=PUT" method="POST">
        Name: <input type="text" name="name" value="<%=Dept.name%>" required> <br />
-       Product Type: <input type="text" name="productType" value="<%= Dept.productType%>" required> <br />
-
+       Product Type: <input type="text" name="productType" value="<%=Dept.productType%>" required> <br />
+       Image: <input type="text" name="img" value="<%=Dept.img%>" required/><br />
         <input type="submit" name="" value="Update Department" />
     </form>
 
