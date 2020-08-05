@@ -1,11 +1,17 @@
 <main class="indexDept">
     <div class="Departments">
         <h3>List of all Departments</h3>
-        <p>
+        <div class="container">
         <% Dept.forEach(departments => { %>
-            Department Name: <a href="/Store/Depts/<%= departments._id%>"> <%= departments.name %> </a> <br />
-        </p>
+            <div class="card" style="width: 18rem;">
+                <img src="<%=departments.img%>" class="card-img-top" alt="No Image for Department">
+                <div class="card-body">
+                  <h5 class="card-title"><%=departments.name%></h5>
+                  <a href="/Store/Depts/<%=departments._id%>" class="btn btn-primary">Go to Department</a>
+                </div>
+              </div>
         <% }) %>
+        </div>
     </div>
     <div>
         <a href="/Store/Depts/new">Add a New Department</a>
