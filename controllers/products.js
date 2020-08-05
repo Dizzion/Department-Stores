@@ -46,70 +46,86 @@ function showProds(req, res) {
 }
 // render the page to add a new Product
 function newProds(req, res) {
-    Depts.find({}, (err, allDepts) => {
-        res.render('Products/new', {
-            depts: allDepts
+    if (req.session.loggedIn) {
+        Depts.find({}, (err, allDepts) => {
+            res.render('Products/new', {
+                depts: allDepts
+            })
         })
-    })
+    } else {
+        res.redirect('/Store/Users')
+    }
 }
 //  add a new Product to the database
 function addProds(req, res) {
-    if (req.body.inStock === 'on') {
-        req.body.inStock = true
-    } else {
-        req.body.inStock = false
-    }
-    Products.create(req.body, (err, addedProduct) => {
-        if (err) {
-            res.send(err)
+    if (req.session.loggedIn) {
+        if (req.body.inStock === 'on') {
+            req.body.inStock = true
         } else {
-            Depts.findById(req.body.deptId, (err, foundDept) => {
-                foundDept.products.push(addedProduct)
-                foundDept.save((err, addedProduct) => {
-                    res.redirect('/Store/Products')
-                })
-            })
+            req.body.inStock = false
         }
-    })
+        Products.create(req.body, (err, addedProduct) => {
+            if (err) {
+                res.send(err)
+            } else {
+                Depts.findById(req.body.deptId, (err, foundDept) => {
+                    foundDept.products.push(addedProduct)
+                    foundDept.save((err, addedProduct) => {
+                        res.redirect('/Store/Products')
+                    })
+                })
+            }
+        })
+    } else {
+        res.redirect('/Store/Users')
+    }
 }
 // delete a Product from the database
 function deleteProds(req, res) {
-    Depts.findOne({ 'products': req.params.id}, (err, foundDept) => {
-        let pos = foundDept.products.indexOf(req.params.id)
-        foundDept.products.splice(pos, 1)
-        foundDept.save()
-    })
-    Products.findByIdAndRemove(req.params.id, (err, deletedProduct) => {
-        if (err) {
-            res.send(err)
-        } else {
-            Comments.deleteMany({
-                _id: {
-                    $in: deletedProduct.comments
-                }
-            }, (err, data) => {
-                res.redirect('/Store/Depts')
-            })
-        }
-    })
+    if (req.session.loggedIn) {
+        Depts.findOne({ 'products': req.params.id }, (err, foundDept) => {
+            let pos = foundDept.products.indexOf(req.params.id)
+            foundDept.products.splice(pos, 1)
+            foundDept.save()
+        })
+        Products.findByIdAndRemove(req.params.id, (err, deletedProduct) => {
+            if (err) {
+                res.send(err)
+            } else {
+                Comments.deleteMany({
+                    _id: {
+                        $in: deletedProduct.comments
+                    }
+                }, (err, data) => {
+                    res.redirect('/Store/Depts')
+                })
+            }
+        })
+    } else {
+        res.redirect('/Store/Users')
+    }
 }
 // edit a Product in the database
 function editProds(req, res) {
-    Depts.find({}, (err, allDepts) => {
-        Depts.findOne({ 'products': req.params.id })
-            .populate({ path: 'products', match: { _id: req.params.id } })
-            .exec((err, foundProductDept) => {
-                if (err) {
-                    res.send(err)
-                } else {
-                    res.render('Products/edit', {
-                        products: foundProductDept.products[0],
-                        depts: allDepts,
-                        ProductDept: foundProductDept
-                    })
-                }
-            })
-    })
+    if (req.session.loggedIn) {
+        Depts.find({}, (err, allDepts) => {
+            Depts.findOne({ 'products': req.params.id })
+                .populate({ path: 'products', match: { _id: req.params.id } })
+                .exec((err, foundProductDept) => {
+                    if (err) {
+                        res.send(err)
+                    } else {
+                        res.render('Products/edit', {
+                            products: foundProductDept.products[0],
+                            depts: allDepts,
+                            ProductDept: foundProductDept
+                        })
+                    }
+                })
+        })
+    } else {
+        res.redirect('/Store/Users')
+    }
 }
 // update a Product in the database from the updated info
 function updateProds(req, res) {

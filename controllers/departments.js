@@ -23,53 +23,69 @@ function indexDepts(req, res) {
 // show dept indivdualy
 function showDepts(req, res) {
     Depts.findById(req.params.id)
-    .populate({path: 'products'})
-    .exec((err, foundDept) => {
-        if(err) {
-            res.send(err)
-        } else {
-            res.render('Departments/show', {
-                Dept: foundDept
-            })
-        }
-    })
+        .populate({ path: 'products' })
+        .exec((err, foundDept) => {
+            if (err) {
+                res.send(err)
+            } else {
+                res.render('Departments/show', {
+                    Dept: foundDept
+                })
+            }
+        })
 }
 // render the page to add a new dept
 function newDepts(req, res) {
-    res.render('Departments/new')
+    if (req.session.loggedIn) {
+        res.render('Departments/new')
+    } else {
+        res.redirect('/Store/Users')
+    }
 }
 //  add a new dept to the database
 function addDepts(req, res) {
-    Depts.create(req.body, (err, addedDept) => {
-        res.redirect('/Store/Depts')
-    })
+    if (req.session.loggedIn) {
+        Depts.create(req.body, (err, addedDept) => {
+            res.redirect('/Store/Depts')
+        })
+    } else {
+        res.redirect('/Store/Users')
+    }
 }
 // delete a dept from the database
 function deleteDepts(req, res) {
-    Depts.findByIdAndRemove(req.params.id, (err, deletedDept) => {
-        if(err) {
-            res.send(err)
-        } else {
-            Product.deleteMany({
-                _id: {
-                    $in: deletedDept.products
-                }
-            }, (err, data) => {
-                res.redirect('/Store/Depts')
-            })
-        }
-    })
+    if (req.session.loggedIn) {
+        Depts.findByIdAndRemove(req.params.id, (err, deletedDept) => {
+            if (err) {
+                res.send(err)
+            } else {
+                Product.deleteMany({
+                    _id: {
+                        $in: deletedDept.products
+                    }
+                }, (err, data) => {
+                    res.redirect('/Store/Depts')
+                })
+            }
+        })
+    } else {
+        res.redirect('/Store/Users')
+    }
 }
 // edit a Dept in the database
 function editDepts(req, res) {
-    Depts.findById(req.params.id, (err, foundDept) => {
-        res.render(
-            'Departments/edit',
-            {
-                Dept: foundDept
-            }
-        )
-    })
+    if (req.session.loggedIn) {
+        Depts.findById(req.params.id, (err, foundDept) => {
+            res.render(
+                'Departments/edit',
+                {
+                    Dept: foundDept
+                }
+            )
+        })
+    } else {
+        res.redirect('/Store/Users')
+    }
 }
 // update a Dept in the database from the updated info
 function updateDepts(req, res) {
