@@ -1,0 +1,55 @@
+h3 {
+  color: #0f0; }
+  h3:hover {
+    color: #00f; }
+
+.Departments li a {
+  color: #4CAF50; }
+
+h1 {
+  color: #4CAF50; }
+
+#signUp {
+  float: right; }
+
+.showpage {
+  margin: 1em; }
+
+.homepage {
+  margin: 1em; }
+
+.indexpage {
+  margin: 1em; }
+
+.producteditpage {
+  margin: 1em; }
+
+.newproductpage {
+  margin: 1em; }
+
+.editDept {
+  margin: 1em; }
+
+.indexDept {
+  margin: 1em; }
+
+.newDept {
+  margin: 1em; }
+
+.showDept {
+  margin: 1em; }
+.edituserpage {
+  margin: 1em;
+}
+.indexuserpage {
+  margin: 1em;
+}
+.newuserpage {
+  margin: 1em;
+}
+.showuserpage {
+  margin: 1em;
+}
+#navbarText {
+  display: flex;
+  justify-content: space-between; }

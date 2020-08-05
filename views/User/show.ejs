@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<main class="showuserpage">
+    <h3>Here is Your Account Information</h3>
+    <p> User Name: <%=user.username%><br />
+        Name: <%=user.name%><br />
+        Email: <%=user.email%><br />
+        <br>
+        <% user.comments.forEach(comment => { %>
+        <%=comment.title%><br />
+        <%=comment.body%><br />
+        <% }) %>
+    </p>
+    <a href="/Stores/Users/<%=user._id%>/edit">Edit Your Account Information Here</a>
+    <form action="/Stores/Users/<%=user._id%>?_method=DELETE" method="POST">
+        <input type="submit" name="" value="Delete Your Account"/>
+    </form>
+</main> 
