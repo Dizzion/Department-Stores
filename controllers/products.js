@@ -137,7 +137,7 @@ function updateProds(req, res) {
     Products.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedProduct) => {
         Depts.findOne({ 'products': req.params.id }, (err, foundDept) => {
             if (foundDept._id.toString() !== req.body.deptId) {
-                foundDept.Products.deleteOne(req.params.id)
+                foundDept.products.deleteOne(req.params.id)
                 foundDept.save((err, savedFoundDept) => {
                     Dept.findById(req.body.deptId, (err, newDept) => {
                         newDept.products.push(updatedProduct)
