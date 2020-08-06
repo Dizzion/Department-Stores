@@ -12,6 +12,7 @@ const passport = require('passport')
 const flash = require('connect-flash')
 const cookieParser = require('cookie-parser')
 const MongoStore = require('connect-mongo')(session)
+const router = express.Router()
 
 require('./config/passport')(passport)
 
@@ -41,6 +42,9 @@ app.use(express.static('./' + '/public'))
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/Store', storeRouter)
 
+router.get('/', (req, res) => {
+    res.redirect('/Store')
+})
 
 // listen on port 3000
 app.listen(process.env.PORT || 3000, () => {
