@@ -14,7 +14,10 @@ app.use(ejsLayouts);
 app.use(session({
     secret: "ShhItsSecretGuys",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 5 * 60 * 60 * 1000
+    }
 }))
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: false }))

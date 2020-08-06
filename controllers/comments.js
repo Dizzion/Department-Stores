@@ -1,6 +1,7 @@
 // // Alex's Section
 const Comments = require('../modules/comments')
 const Products = require('../modules/products')
+const User = require('../modules/User')
 
 // export all functionality to router
 module.exports = {
@@ -17,10 +18,21 @@ function addComms(req, res) {
             res.send(err);
         } else {
             Products.findById(req.params.id, (err, foundProduct) => {
-                foundProduct.comments.push(addedComment)
-                foundProduct.save((err, addedComment) => {
-                    res.redirect('/Store/Products/' + req.params.id)
-                })
+                if (req.session.user === undefined) {
+                    foundProduct.comments.push(addedComment)
+                    foundProduct.save((err, addedComment) => {
+                        return res.redirect('/Store/Products/' + req.params.id)
+                    })
+                } else {
+                    User.findById(req.session.user, (err, foundUser) => {
+                        foundUser.comments.push(addedComment)
+                        foundUser.save()
+                        foundProduct.comments.push(addedComment)
+                        foundProduct.save((err, addedComment) => {
+                            res.redirect('/Store/Products/' + req.params.id)
+                        })
+                    })
+                }
             })
         }
     })
@@ -29,8 +41,15 @@ function addComms(req, res) {
 // Delete Comment from Product show pages
 function deleteComms(req, res) {
     if (req.session.loggedIn) {
-        Comments.findByIdAndDelete(req.body.commentId, (err, data) => {
+        Comments.findByIdAndDelete(req.params.id, (err, data) => {
             Products.findOne({ 'comments': req.params.id }, (err, foundProduct) => {
+                User.findOne({ 'comments': req.params.id }, (err, foundUser) => {
+                    if (foundUser !== null) {
+                        let pos = foundUser.comments.indexOf(req.params.id)
+                        foundUser.comments.splice(pos, 1)
+                        foundUser.save()
+                    }
+                })
                 let pos = foundProduct.comments.indexOf(req.params.id)
                 foundProduct.comments.splice(pos, 1)
                 foundProduct.save()
