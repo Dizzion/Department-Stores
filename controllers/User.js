@@ -1,6 +1,7 @@
 // Alex's Section
 const User = require('../modules/User')
 const Comments = require('../modules/comments')
+const bcrypt = require('bcryptjs')
 
 module.exports = {
     indexUser,
@@ -37,23 +38,71 @@ function newUser(req, res) {
 }
 
 function addUser(req, res) {
-    if (req.body.password !== req.body.password2) {
-        return res.render('User/new', {
-            errors: "Passwords Did Not Match"
+
+
+    const { username, password, password2, email, name } = req.body
+    let errors = []
+
+    if (!username || !email || !password || !password2 || !name) {
+        errors.push({ msg: 'Please enter all fields' });
+    }
+
+    if (password != password2) {
+        errors.push({ msg: 'Passwords do not match' });
+    }
+
+    if (password.length < 6) {
+        errors.push({ msg: 'Password must be at least 6 characters' });
+    }
+
+    if (errors.length > 0) {
+        res.render('User/new', {
+            errors,
+            username,
+            email,
+            password,
+            password2,
+            name
+        });
+    } else {
+        User.findOne({ username: username }).then(user => {
+            if (user) {
+                errors.push({ msg: 'Username already exists' })
+                res.render('User/new', {
+                    errors,
+                    username,
+                    email,
+                    password,
+                    password2,
+                    name
+                })
+            } else {
+                const newUser = new User({
+                    username,
+                    password,
+                    email,
+                    name
+                })
+
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newUser.password, salt, (err, hash) => {
+                        if (err) throw err
+                        newUser.password = hash
+                        newUser
+                            .save()
+                            .then(user => {
+                                req.flash(
+                                    'success_msg',
+                                    'You are now registered and can log in'
+                                )
+                                res.redirect('/Store/Users')
+                            })
+                            .catch(err => console.log(err))
+                    })
+                })
+            }
         })
     }
-    User.create(req.body, (err, addedUser) => {
-        if (addedUser === undefined) {
-            return res.render('User/new', {
-                errors: "Username Already Exists"
-            })
-        } else {
-            req.session.user = addedUser._id
-            req.session.username = addedUser.username
-            req.session.loggedIn = true
-            res.redirect('/Store')
-        }
-    })
 }
 
 function editUser(req, res) {

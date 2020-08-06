@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 // create and use Stores database
-// const connectionString = 'mongodb://localhost/Stores'
+const connectionString = 'mongodb://localhost/Stores'
 const connectionString2 = 'mongodb+srv://Client_User:HnbXEil3V3loBbBM@deparmentstore1.xevrz.mongodb.net/<dbname>?retryWrites=true&w=majority'
 
-mongoose.connect(connectionString2, {
+mongoose.connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -12,7 +12,7 @@ mongoose.connect(connectionString2, {
 
 // check connection to the database
 mongoose.connection.on('connected', () => {
-    console.log(`Mongoose connected to ${connectionString2}`);
+    console.log(`Mongoose connected to ${connectionString}`);
 });
 
 mongoose.connection.on('disconnected', () => {

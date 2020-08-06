@@ -1,14 +1,21 @@
-<main class="showuserpage">
-    <h3>Here is Your Account Information</h3>
-    <p> User Name: <%=user.username%><br />
-        Name: <%=user.name%><br />
-        Email: <%=user.email%><br />
-        <br>
+<main class="showuserpage text-center">
+
+
+    <div class="container-fluid row">
+        <div class="card mx-auto" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Here is Your Account Information</h5>
+                <p class="card-text">
+                    User Name: <%=user.username%><br />
+                    Name: <%=user.name%><br />
+                    Email: <%=user.email%><br /></p>
+                <a href="/Store/Users/<%=user._id%>/edit" class="card-link">Edit Your Account Information</a><br />
+                <a href="/Store/logout" class="card-link">Log Out</a>
+            </div>
+        </div>
         <% user.comments.forEach(comment => { %>
         <%=comment.title%><br />
         <%=comment.body%><br />
         <% }) %>
-    </p>
-    <a href="/Store/Users/<%=user._id%>/edit">Edit Your Account Information Here</a><br />
-    <a href="/Store/logout">Log Out</a>
-</main> 
+    </div>
+</main>

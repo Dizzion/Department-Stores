@@ -1,4 +1,5 @@
 const User = require("../modules/User")
+const passport = require('passport')
 
 module.exports = {
     login,
@@ -6,26 +7,26 @@ module.exports = {
 }
 
 function login(req, res) {
+    passport.authenticate('local', {
+        failureRedirect: '/Store/Users',
+        failureFlash: true
+    })
     User.findOne({ 'username': req.body.username }, (err, foundUser) => {
-        if (req.body.password !== foundUser.password) {
-            return res.render('User/index', {
-                errors: "Not a valid Password or User Name"
-            })
-        } else {
-            req.session.username = foundUser.username
+        if (foundUser !== null) {
             req.session.user = foundUser._id
             req.session.loggedIn = true
             res.redirect('/Store')
+        } else {
+            res.render('User/index', {
+                error: 'Username Not Found (carefull it is case sensitive)'
+            })
         }
     })
 }
 
 function logout(req, res) {
-    req.session.destroy(err => {
-        if (err) {
-            res.redirect('/Store')
-        } else {
-            res.redirect('/Store')
-        }
-    })
+    req.logout()
+    req.flash('sucess_msg', 'You are logged out')
+    req.session.destroy()
+    res.redirect('/Store')
 }

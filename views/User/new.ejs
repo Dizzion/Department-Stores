@@ -5,22 +5,19 @@
         <form class="form-signin" action="/Store/Login" method="POST">
             <%- include('../partials/messages') %>
             <label for="inputUsername" class="sr-only">Username</label>
-            <input name="username" type="text" id="inputUsername" class="form-control" placeholder="Username"
-                required="" autofocus="">
+            <input name="username" type="text" id="inputUsername" class="form-control" placeholder="Username" autofocus="">
 
             <label for="inputPassword" class="sr-only">Password</label>
-            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password"
-                required="">
+            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password">
 
             <label for="inputPassword2" class="sr-only">Password</label>
-            <input name="password2" type="password" id="inputPassword2" class="form-control" placeholder="Confirm Password"
-                required="">
+            <input name="password2" type="password" id="inputPassword2" class="form-control" placeholder="Confirm Password">
 
             <label for="inputName" class="sr-only">Name</label>
-            <input name="name" type="text" id="inputName" class="form-control" placeholder="Full Name" required="">
+            <input name="name" type="text" id="inputName" class="form-control" placeholder="Full Name" >
 
             <label for="inputEmail" class="sr-only">Email</label>
-            <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required="">
+            <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" >
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
         </form>
