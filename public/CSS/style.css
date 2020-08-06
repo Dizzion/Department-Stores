@@ -85,3 +85,18 @@ body {
 p {
   color: gray;
 }
+.productshowA {
+  text-decoration: none;
+  color: grey;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.text-muted {
+  font-size: .25rem;
+}

@@ -1,43 +1,53 @@
 <main class="showpage">
-    <section>
-        <div>
-            <h2><%=products.name%></h3>
-            <p>This Product is part of <a href="/Store/Depts/<%=dept._id%>"><%=dept.name%></a> Department</p>
-        </div>
-        <div>
-            <p>
-                <%= products.manufacturer %> is the manufacturer of this product.<br />
-                The Price of <%= products.name %> is $<%= products.price %>. <br />
-                <% if (products.inStock === true) { %>
-                    <%= products.name %> is instock and available to buy. 
-                <% } else { %>
+
+    <body class="text-center">
+        <section>
+            <div>
+                <h2><%=products.name%></h3>
+                    <p>This Product is part of <a class="productshowA"
+                            href="/Store/Depts/<%=dept._id%>"><%=dept.name%></a> Department</p>
+            </div>
+            <div>
+                <p>
+                    <%= products.manufacturer %> is the manufacturer of this product.<br />
+                    The Price of <%= products.name %> is $<%= products.price %>. <br />
+                    <% if (products.inStock === true) { %>
+                    <%= products.name %> is instock and available to buy.
+                    <% } else { %>
                     <%= products.name %> is Not available to buy.
-                <% } %> <br/> 
-            </p>
-        </div>
-        <div>
-            <a class="btn btn-warning" href="/Store/Products/<%=products._id%>/edit">Edit this Product</a>
-        </div>
-        <div>
-            <form action="/Store/Products/<%=products._id%>?_method=DELETE" method="POST">
-                <input class="btn btn-danger" type="submit" value="Delete Product"/>
-            </form>
-        </div>
-        <div class="commentForm">
-            <form action="/Store/Products/<%=products._id%>" method="POST">
-                Comment Title: <input type="text" name="title" required/><br />
-                <textarea name="body" placeholder="Add Comment Here" cols="30" rows="10"></textarea><br />
-               <input class="btn btn-success" type="submit" name="" value="Add Comment"/>
-            </form>
-        </div>
-        <div>
-            <% products.comments.forEach(comment => { %>
-                <p><strong><%=comment.title%></strong></p>
-                <p><%=comment.body%></p><a href="/Store/Comments/<%=comment._id%>/edit">Edit Comment</a>
-                <form action="/Store/Comments/<%=comment._id%>?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete Comment"/>
+                    <% } %> <br />
+                </p>
+            </div>
+            <div>
+                <a class="btn btn-warning" href="/Store/Products/<%=products._id%>/edit">Edit this Product</a>
+            </div>
+            <div>
+                <form action="/Store/Products/<%=products._id%>?_method=DELETE" method="POST">
+                    <input class="btn btn-danger" type="submit" value="Delete Product" />
                 </form>
-            <% }) %>
-        </div>
-    </section>
+            </div>
+            <div class="commentForm">
+                <form class="form-signin" action="/Store/Products/<%=products._id%>" method="POST">
+                    <label for="inputTitle" class="sr-only">Comment Title</label>
+                    <input id="inputTitle" class="form-control" type="text" name="title" required
+                        placeholder="Comment Title" autofocus /><br />
+                    <textarea name="body" placeholder="Add Comment Here" cols="30" rows="10"></textarea><br />
+                    <input class="btn btn-success" type="submit" name="" value="Add Comment" />
+                </form>
+            </div>
+            <div>
+                <% products.comments.forEach(comment => { %>
+                <p><strong><%=comment.title%></strong></p>
+                <p><%=comment.body%></p>
+                <div>
+                    <a style="margin-bottom: 1rem;" class="btn btn-warning"
+                        href="/Store/Comments/<%=comment._id%>/edit">Edit Comment</a>
+                    <form action="/Store/Comments/<%=comment._id%>?_method=DELETE" method="POST">
+                        <input class="btn btn-danger" type="submit" value="Delete Comment" />
+                    </form>
+                </div>
+                <% }) %>
+            </div>
+        </section>
+    </body>
 </main>
