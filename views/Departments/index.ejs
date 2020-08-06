@@ -4,7 +4,7 @@
         <div class="container-fluid row">
         <% Dept.forEach(departments => { %>
             <div class="card" style="width: 18rem;">
-                <img src="<%=departments.img%>" class="card-img-top" alt="No Image for Department">
+                <img class="img-responsive" src="<%=departments.img%>" class="card-img-top" alt="No Image for Department">
                 <div class="card-body">
                   <h5 class="card-title"><%=departments.name%></h5>
                   <a href="/Store/Depts/<%=departments._id%>" class="btn btn-primary">Go to Department</a>

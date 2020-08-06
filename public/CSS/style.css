@@ -67,9 +67,6 @@ nav {
   justify-items: baseline;
   font-size: smaller;
 }
-/* footer {
-  height: 1em;
-} */
 
 span {
   display: flex;
@@ -98,5 +95,9 @@ p {
 }
 
 .text-muted {
-  font-size: .25rem;
+  font-size: .60rem;
+}
+
+.card img {
+  max-height: 200px;
 }

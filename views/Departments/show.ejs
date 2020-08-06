@@ -6,10 +6,10 @@
         <div class="container-fluid row">
             <% Dept.products.forEach(product => { %>
                 <div class="card" style="width: 18rem;">
-                    <img src="<%=product.img%>" class="card-img-top" alt="No Product Image">
+                    <img class="img-responsive" src="<%=product.img%>" class="card-img-top" alt="No Product Image">
                     <div class="card-body">
-                      <h5 class="card-title"><%= product.name %></h5>
-                      <a href="/Store/Products/<%=product._id %>" class="btn btn-primary">Go To Product</a>
+                      <h5 class="card-title float-center">$ <%=product.price%></h5>
+                      <a href="/Store/Products/<%=product._id %>" class="btn btn-primary float-center"><%=product.name%></a>
                     </div>
                   </div><br />
             <% }) %>
