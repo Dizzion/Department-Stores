@@ -3,6 +3,7 @@
     <body class="text-center">
         <section>
             <div>
+                <img src="<%=products.img%>" alt="" style="max-width: 286px; max-height: 200px;" class="img-responsive">
                 <h2><%=products.name%></h3>
                     <p>This Product is part of <a class="productshowA"
                             href="/Store/Depts/<%=dept._id%>"><%=dept.name%></a> Department</p>
@@ -10,7 +11,7 @@
             <div>
                 <p>
                     <%= products.manufacturer %> is the manufacturer of this product.<br />
-                    The Price of <%= products.name %> is $<%= products.price %>. <br />
+                    The Price of <%= products.name %> is $ <%= products.price %>. <br />
                     <% if (products.inStock === true) { %>
                     <%= products.name %> is instock and available to buy.
                     <% } else { %>
