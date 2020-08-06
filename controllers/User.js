@@ -37,9 +37,16 @@ function newUser(req, res) {
 }
 
 function addUser(req, res) {
+    if (req.body.password !== req.body.password2) {
+        return res.render('User/new', {
+            errors: "Passwords Did Not Match"
+        })
+    }
     User.create(req.body, (err, addedUser) => {
         if (addedUser === undefined) {
-            return res.send('<h1>User Name Already Exists</h1><br /><a href="/Store/Users/new">Back</a>')
+            return res.render('User/new', {
+                errors: "Username Already Exists"
+            })
         } else {
             req.session.user = addedUser._id
             req.session.username = addedUser.username
