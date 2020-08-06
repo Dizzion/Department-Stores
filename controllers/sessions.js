@@ -8,7 +8,9 @@ module.exports = {
 function login(req, res) {
     User.findOne({ 'username': req.body.username }, (err, foundUser) => {
         if (req.body.password !== foundUser.password) {
-            return res.send('<h1>Not a valid password or User Name</h1><br/><a href="/Store/Users">Back</a>')
+            return res.render('User/index', {
+                errors: "Not a valid Password or User Name"
+            })
         } else {
             req.session.username = foundUser.username
             req.session.user = foundUser._id
