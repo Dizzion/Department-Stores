@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 require('./db/db')
+require('dotenv').config()
 const session = require('express-session')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -20,7 +21,7 @@ app.use(ejsLayouts)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(session({
-    secret: "ShhItsSecretGuys",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     store: new MongoStore({mongooseConnection: mongoose.connection,
@@ -40,10 +41,9 @@ app.use(express.static('./' + '/public'))
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/Store', storeRouter)
 
-const PORT = process.env.PORT || 3000
 
 // listen on port 3000
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
     console.log('Up and Ready to Shop')
 })
 
