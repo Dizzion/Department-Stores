@@ -3,7 +3,7 @@
     <div class="container-fluid row">
         <% products.forEach(product => { %>
         <div class="card" style="width: 18rem;">
-            <img src="<%=product.img%>" class="card-img-top" alt="No Product Image">
+            <img style="max-height: 200px; max-width: auto;" src="<%=product.img%>" class="card-img-top" alt="No Product Image">
             <div class="card-body">
                 <h5 class="card-title"><%=product.name%></h5>
                 <a href="/Store/Products/<%=product._id%>" class="btn btn-primary">Go to Product</a>

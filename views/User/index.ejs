@@ -1,9 +1,17 @@
 <main class="indexuserpage">
-    <h3>Login with Your Username and Password</h3>
-    <form action="/Store/Users" method="POST">
-       Username: <input type="text" name="username" required/><br />
-       Password: <input type="password" name="password" required/><br />
-        <input type="submit" name="" value="Log In to Your Account"/>
+
+  <body class="text-center">
+    <form class="form-signin" action="/Store/Users" method="POST">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="inputUsername" class="sr-only">Email address</label>
+      <input name="username" type="text" id="inputUsername" class="form-control" placeholder="Username" required=""
+        autofocus="">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+      <input class="btn btn-lg btn-primary btn-block" name="" type="submit" value="Sign In" />
+      <p class="mt-5 mb-3 text-muted">© 2020</p>
+      <a class="btn btn-lg btn-primary btn-block" href="/Store/Users/new">Create New Account</a>
     </form>
-    <a href="/Store/Users/new">Create New Account</a>
+  </body>
+
 </main>

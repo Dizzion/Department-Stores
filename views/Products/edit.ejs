@@ -1,25 +1,37 @@
 <main class="producteditpage">
     <h3>Edit <%=products.name%></h3>
-    <form action="/Store/Products/<%=products._id%>?_method=PUT" method="POST">
-        Choose a Department For Your Product <select name="deptId">
-            <% depts.forEach(dept => { %>
-                <option value="<%=dept._id%>"
-                    <% if (dept._id.toString() === ProductDept._id.toString()) { %>
-                        selected
-                    <% } %> 
-                >
-                <%=dept.name%>    
+
+    <body class="text-center">
+        <form class="form-signin" action="/Store/Products/<%=products._id%>?_method=PUT" method="POST">
+            <select name="deptId" class="form-control">
+                <% depts.forEach(dept => { %>
+                <option value="<%=dept._id%>" <% if (dept._id.toString() === ProductDept._id.toString()) { %> selected
+                    <% } %>>
+                    <%=dept.name%>
                 </option>
-            <% }) %>
-        </select> <br />
-        Name: <input type="text" name="name" value="<%=products.name%>" required/><br />
-        Manufacturer: <input type="text" name="manufacturer" value="<%=products.manufacturer%>" required/><br />
-        Price: <input type="text" name="price" value="<%=products.price%>" required/><br />
-        Image: <input type="text" name="img" value="<%=products.img%>" required/><br />
-        In Stock? <input type="checkbox" name="inStock"
-            <% if (products.inStock === true) { %>
-                checked
-            <% } %>/><br />
-        <input class="btn btn-success" type="submit" name="" value="Submit Changes to this Product"/>
-    </form>
+                <% }) %>
+            </select>
+            <label for="inputName" class="sr-only">Name</label>
+            <input type="text" id="inputName" class="form-control" placeholder="Product Name"
+                value="<%=products.price%>" required="" autofocus="">
+            <label for="inputManu" class="sr-only">Manufacturer</label>
+            <input type="text" id="inputManu" class="form-control" placeholder="Manufacturer"
+                value="<%=products.manufacturer%>" required="">
+            <label for="inputPrice" class="sr-only">Price</label>
+            <input type="text" id="inputPrice" class="form-control" placeholder="Price" value="<%=products.price%>"
+                required="">
+            <label for="inputImg" class="sr-only">Image</label>
+            <input type="text" id="inputImg" class="form-control" placeholder="Image Url" value="<%=products.img%>"
+                required="">
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="inStock" <% if (products.inStock === true) { %> checked <% } %>>
+                    Instock?
+                </label>
+            </div>
+            <button class="btn btn-lg btn-warning btn-block" type="submit">Submit Edit</button>
+        </form>
+
+
+    </body>
 </main>
