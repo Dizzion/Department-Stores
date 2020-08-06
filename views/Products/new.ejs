@@ -1,16 +1,28 @@
 <main class="newproductpage">
     <h3>Please Fill out the Form to add your Product to your Department</h3>
-    <form action="/Store/Products/" method="post">
-        Choose a Department For Your Product <select name="deptId">
-            <% depts.forEach(department => { %>
-             <option value="<%= department._id %>"><%= department.name %> </option>
-            <% }) %>
-        </select> <br />
-        Name: <input type="text" name="name" required/><br />
-        Manufacturer: <input type="text" name="manufacturer" required/><br />
-        Price: <input type="text" name="price" required/><br />
-        Image: <input type="text" name="img" required/><br />
-        In Stock: <input type="checkbox" name="inStock"> <br />
-        <input type="submit" value="Add Product">
-    </form>
+
+    <body class="text-center">
+        <form class="form-signin" action="/Store/Products/" method="POST">
+            <select name="deptId" class="form-control">
+                <% depts.forEach(department => { %>
+                 <option value="<%= department._id %>"><%= department.name %> </option>
+                <% }) %>
+            </select>
+            <label for="inputName" class="sr-only">Name</label>
+            <input type="text" name="name" id="inputName" class="form-control" placeholder="Product Name" required="" autofocus="">
+            <label for="inputManu" class="sr-only">Manufacturer</label>
+            <input type="text" name="manufacturer" id="inputManu" class="form-control" placeholder="Manufacturer"
+                required="">
+            <label for="inputPrice" class="sr-only">Price</label>
+            <input type="text" name="price" id="inputPrice" class="form-control" placeholder="Price" required="">
+            <label for="inputImg" class="sr-only">Image</label>
+            <input type="text" name="img" id="inputImg" class="form-control" placeholder="Image Url" required="">
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="inStock"> In Stock?
+                </label>
+            </div>
+            <button class="btn btn-lg btn-success btn-block" type="submit">Submit Product</button>
+        </form>
+    </body>
 </main>

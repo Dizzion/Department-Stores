@@ -135,11 +135,12 @@ function updateProds(req, res) {
         req.body.inStock = false
     }
     Products.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedProduct) => {
-        Depts.findOne({ 'products': req.params.id }, (err, foundDept) => {
+        Depts.findOne({ products: req.params.id }, (err, foundDept) => {
             if (foundDept._id.toString() !== req.body.deptId) {
-                foundDept.Products.deleteOne(req.params.id)
+                let pos = foundDept.products.indexOf(req.params.id)
+                foundDept.products.splice(pos, 1)
                 foundDept.save((err, savedFoundDept) => {
-                    Dept.findById(req.body.deptId, (err, newDept) => {
+                    Depts.findById(req.body.deptId, (err, newDept) => {
                         newDept.products.push(updatedProduct)
                         newDept.save((err, savedNewDept) => {
                             res.redirect('/Store/Products')

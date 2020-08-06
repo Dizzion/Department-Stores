@@ -1,7 +1,7 @@
-h3 {
+/* h3 {
   color: #0f0; }
   h3:hover {
-    color: #00f; }
+    color: #00f; } */
 
 .Departments li a {
   color: #4CAF50; }
@@ -50,6 +50,54 @@ h1 {
 .showuserpage {
   margin: 1em;
 }
+div {
+  margin: 0.5em;
+}
 #navbarText {
   display: flex;
   justify-content: space-between; }
+nav {
+  margin-top: 0.5em;
+}
+
+#footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: baseline;
+  font-size: smaller;
+}
+
+span {
+  display: flex;
+  justify-content: space-between;
+}
+#github {
+  color: gray;
+  text-decoration: none;
+}
+body {
+  padding-bottom: 100px;
+}
+p {
+  color: gray;
+}
+.productshowA {
+  text-decoration: none;
+  color: grey;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.text-muted {
+  font-size: .60rem;
+}
+
+.card img {
+  max-height: 200px;
+}
