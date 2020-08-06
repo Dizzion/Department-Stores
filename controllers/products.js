@@ -53,7 +53,7 @@ function newProds(req, res) {
             })
         })
     } else {
-        res.redirect('/Store/Users')
+        res.redirect('/Users')
     }
 }
 //  add a new Product to the database
@@ -71,13 +71,13 @@ function addProds(req, res) {
                 Depts.findById(req.body.deptId, (err, foundDept) => {
                     foundDept.products.push(addedProduct)
                     foundDept.save((err, addedProduct) => {
-                        res.redirect('/Store/Products')
+                        res.redirect('/Products')
                     })
                 })
             }
         })
     } else {
-        res.redirect('/Store/Users')
+        res.redirect('/Users')
     }
 }
 // delete a Product from the database
@@ -97,12 +97,12 @@ function deleteProds(req, res) {
                         $in: deletedProduct.comments
                     }
                 }, (err, data) => {
-                    res.redirect('/Store/Depts')
+                    res.redirect('/Depts')
                 })
             }
         })
     } else {
-        res.redirect('/Store/Users')
+        res.redirect('/Users')
     }
 }
 // edit a Product in the database
@@ -124,7 +124,7 @@ function editProds(req, res) {
                 })
         })
     } else {
-        res.redirect('/Store/Users')
+        res.redirect('/Users')
     }
 }
 // update a Product in the database from the updated info
@@ -143,12 +143,12 @@ function updateProds(req, res) {
                     Depts.findById(req.body.deptId, (err, newDept) => {
                         newDept.products.push(updatedProduct)
                         newDept.save((err, savedNewDept) => {
-                            res.redirect('/Store/Products')
+                            res.redirect('/Products')
                         })
                     })
                 })
             } else {
-                res.redirect('/Store/Products/' + req.params.id)
+                res.redirect('/Products/' + req.params.id)
             }
         })
     })

@@ -6,13 +6,13 @@
             <img class="img-responsive" src="<%=product.img%>" class="card-img-top" alt="No Product Image">
             <div class="card-body">
                 <h5 id="price" class="card-title float-center">$ <%=product.price%></h5>
-                <a href="/Store/Products/<%=product._id%>" class="btn btn-primary float-center"><%=product.name%></a>
+                <a href="/Products/<%=product._id%>" class="btn btn-primary float-center"><%=product.name%></a>
             </div>
         </div><br />
         <% }) %>   
          
     </div>
     <div>
-        <a class="btn btn-success" href="/Store/Products/new">Add New Product</a>
+        <a class="btn btn-success" href="/Products/new">Add New Product</a>
     </div>
 </main>

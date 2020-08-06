@@ -2,7 +2,7 @@
     <h3>Please Fill out the Form to add your Product to your Department</h3>
 
     <body class="text-center">
-        <form class="form-signin" action="/Store/Products/" method="POST">
+        <form class="form-signin" action="/Products/" method="POST">
             <select name="deptId" class="form-control">
                 <% depts.forEach(department => { %>
                  <option value="<%= department._id %>"><%= department.name %> </option>

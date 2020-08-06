@@ -6,7 +6,7 @@
                 <img src="<%=products.img%>" alt="" style="max-width: 286px; max-height: 200px;" class="img-responsive">
                 <h2><%=products.name%></h3>
                     <p>This Product is part of <a class="productshowA"
-                            href="/Store/Depts/<%=dept._id%>"><%=dept.name%></a> Department</p>
+                            href="/Depts/<%=dept._id%>"><%=dept.name%></a> Department</p>
             </div>
             <div>
                 <p>
@@ -20,15 +20,15 @@
                 </p>
             </div>
             <div>
-                <a class="btn btn-warning" href="/Store/Products/<%=products._id%>/edit">Edit this Product</a>
+                <a class="btn btn-warning" href="/Products/<%=products._id%>/edit">Edit this Product</a>
             </div>
             <div>
-                <form action="/Store/Products/<%=products._id%>?_method=DELETE" method="POST">
+                <form action="/Products/<%=products._id%>?_method=DELETE" method="POST">
                     <input class="btn btn-danger" type="submit" value="Delete Product" />
                 </form>
             </div>
             <div class="commentForm">
-                <form class="form-signin" action="/Store/Products/<%=products._id%>" method="POST">
+                <form class="form-signin" action="/Products/<%=products._id%>" method="POST">
                     <label for="inputTitle" class="sr-only">Comment Title</label>
                     <input id="inputTitle" class="form-control" type="text" name="title" required
                         placeholder="Comment Title" autofocus /><br />
@@ -42,8 +42,8 @@
                 <p><%=comment.body%></p>
                 <div>
                     <a style="margin-bottom: 1rem;" class="btn btn-warning"
-                        href="/Store/Comments/<%=comment._id%>/edit">Edit Comment</a>
-                    <form action="/Store/Comments/<%=comment._id%>?_method=DELETE" method="POST">
+                        href="/Comments/<%=comment._id%>/edit">Edit Comment</a>
+                    <form action="/Comments/<%=comment._id%>?_method=DELETE" method="POST">
                         <input class="btn btn-danger" type="submit" value="Delete Comment" />
                     </form>
                 </div>

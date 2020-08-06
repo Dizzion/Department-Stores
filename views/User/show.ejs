@@ -9,8 +9,8 @@
                     User Name: <%=user.username%><br />
                     Name: <%=user.name%><br />
                     Email: <%=user.email%><br /></p>
-                <a href="/Store/Users/<%=user._id%>/edit" class="card-link">Edit Your Account Information</a><br />
-                <a href="/Store/logout" class="card-link">Log Out</a>
+                <a href="/Users/<%=user._id%>/edit" class="card-link">Edit Your Account Information</a><br />
+                <a href="/logout" class="card-link">Log Out</a>
             </div>
         </div>
         <% user.comments.forEach(comment => { %>

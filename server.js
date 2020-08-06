@@ -40,11 +40,9 @@ app.use(function(req, res, next) {
 })
 app.use(express.static('./' + '/public'))
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
-app.use('/Store', storeRouter)
+app.use('/', storeRouter)
 
-router.get('/', (req, res) => {
-    res.redirect('/Store')
-})
+
 
 // listen on port 3000
 app.listen(process.env.PORT || 3000, () => {

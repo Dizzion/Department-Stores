@@ -2,7 +2,7 @@
     <h3>Edit <%=products.name%></h3>
 
     <body class="text-center">
-        <form class="form-signin" action="/Store/Products/<%=products._id%>?_method=PUT" method="POST">
+        <form class="form-signin" action="/Products/<%=products._id%>?_method=PUT" method="POST">
             <select name="deptId" class="form-control">
                 <% depts.forEach(dept => { %>
                 <option value="<%=dept._id%>" <% if (dept._id.toString() === ProductDept._id.toString()) { %> selected

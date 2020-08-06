@@ -39,13 +39,13 @@ function newDepts(req, res) {
     if (req.session.loggedIn) {
         res.render('Departments/new')
     } else {
-        res.redirect('/Store/Users')
+        res.redirect('/Users')
     }
 }
 //  add a new dept to the database
 function addDepts(req, res) {
     Depts.create(req.body, (err, addedDept) => {
-        res.redirect('/Store/Depts')
+        res.redirect('/Depts')
     })
 }
 // delete a dept from the database
@@ -60,12 +60,12 @@ function deleteDepts(req, res) {
                         $in: deletedDept.products
                     }
                 }, (err, data) => {
-                    res.redirect('/Store/Depts')
+                    res.redirect('/Depts')
                 })
             }
         })
     } else {
-        res.redirect('/Store/Users')
+        res.redirect('/Users')
     }
 }
 // edit a Dept in the database
@@ -80,12 +80,12 @@ function editDepts(req, res) {
             )
         })
     } else {
-        res.redirect('/Store/Users')
+        res.redirect('/Users')
     }
 }
 // update a Dept in the database from the updated info
 function updateDepts(req, res) {
     Depts.findByIdAndUpdate(req.params.id, req.body, (err, updatedDept) => {
-        res.redirect('/Store/Depts')
+        res.redirect('/Depts')
     })
 }

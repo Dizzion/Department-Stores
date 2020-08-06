@@ -9,19 +9,19 @@
                     <img class="img-responsive" src="<%=product.img%>" class="card-img-top" alt="No Product Image">
                     <div class="card-body">
                       <h5 class="card-title float-center">$ <%=product.price%></h5>
-                      <a href="/Store/Products/<%=product._id %>" class="btn btn-primary float-center"><%=product.name%></a>
+                      <a href="/Products/<%=product._id %>" class="btn btn-primary float-center"><%=product.name%></a>
                     </div>
                   </div><br />
             <% }) %>
         </div> <br />
         <div>
-            <a class="btn btn-success" href="/Store/Products/new">Add New Product</a>
+            <a class="btn btn-success" href="/Products/new">Add New Product</a>
         </div>
         <div>
-            <a class="btn btn-warning" href="/Store/Depts/<%=Dept._id %>/edit">Edit Department Info</a>
+            <a class="btn btn-warning" href="/Depts/<%=Dept._id %>/edit">Edit Department Info</a>
         </div>
         <div>
-            <form action="/Store/Depts/<%=Dept._id%>?_method=DELETE" method="POST">
+            <form action="/Depts/<%=Dept._id%>?_method=DELETE" method="POST">
                 <input class="btn btn-danger" type="submit" value="Delete Department">
             </form>
         </div>

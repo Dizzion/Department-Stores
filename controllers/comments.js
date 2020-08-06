@@ -21,7 +21,7 @@ function addComms(req, res) {
                 if (req.session.user === undefined) {
                     foundProduct.comments.push(addedComment)
                     foundProduct.save((err, addedComment) => {
-                        return res.redirect('/Store/Products/' + req.params.id)
+                        return res.redirect('/Products/' + req.params.id)
                     })
                 } else {
                     User.findById(req.session.user, (err, foundUser) => {
@@ -29,7 +29,7 @@ function addComms(req, res) {
                         foundUser.save()
                         foundProduct.comments.push(addedComment)
                         foundProduct.save((err, addedComment) => {
-                            res.redirect('/Store/Products/' + req.params.id)
+                            res.redirect('/Products/' + req.params.id)
                         })
                     })
                 }
@@ -53,11 +53,11 @@ function deleteComms(req, res) {
                 let pos = foundProduct.comments.indexOf(req.params.id)
                 foundProduct.comments.splice(pos, 1)
                 foundProduct.save()
-                res.redirect('/Store/Products/' + foundProduct._id)
+                res.redirect('/Products/' + foundProduct._id)
             })
         })
     } else {
-        res.redirect('/Store/Users')
+        res.redirect('/Users')
     }
 }
 
@@ -78,7 +78,7 @@ function editComms(req, res) {
                 })
         })
     } else {
-        res.redirect('/Store/Users')
+        res.redirect('/Users')
     }
 }
 
@@ -86,7 +86,7 @@ function editComms(req, res) {
 function updateComms(req, res) {
     Products.findOne({ 'comments': req.params.id }, (err, foundProduct) => {
         Comments.findByIdAndUpdate(req.params.id, req.body, () => {
-            res.redirect('/Store/Products/' + foundProduct._id)
+            res.redirect('/Products/' + foundProduct._id)
         })
     })
 }

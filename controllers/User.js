@@ -14,7 +14,7 @@ module.exports = {
 
 function indexUser(req, res) {
     if (req.session.loggedIn) {
-        return res.redirect('/Store/Users/' + req.session.user)
+        return res.redirect('/Users/' + req.session.user)
     }
     res.render('User/index')
 }
@@ -95,7 +95,7 @@ function addUser(req, res) {
                                     'success_msg',
                                     'You are now registered and can log in'
                                 )
-                                res.redirect('/Store/Users')
+                                res.redirect('/Users')
                             })
                             .catch(err => console.log(err))
                     })

@@ -1,6 +1,6 @@
 <main class="edituserpage">
 <h3>Edit Your Account</h3>
-    <form action="/Store/Users/<%=user._id%>?_method=PUT" method="POST">
+    <form action="/Users/<%=user._id%>?_method=PUT" method="POST">
         Username: <input type="text" name="username" value="<%=user.username%>" readonly/><br />
         Password: <input type="text" name="password" value="<%=user.password%>" required/><br />
         Name: <input type="text" name="name" value="<%=user.name%>" required/><br />
