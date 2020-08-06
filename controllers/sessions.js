@@ -8,6 +8,7 @@ module.exports = {
 
 function login(req, res) {
     passport.authenticate('local', {
+        successRedirect: '/Store',
         failureRedirect: '/Store/Users',
         failureFlash: true
     })

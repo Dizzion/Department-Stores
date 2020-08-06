@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(session({
     secret: "ShhItsSecretGuys",
-    resave: true,
+    resave: false,
     saveUninitialized: true,
     store: new MongoStore({mongooseConnection: mongoose.connection,
                             ttl: 1 * 24 * 60 * 60})
