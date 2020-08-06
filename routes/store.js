@@ -5,6 +5,7 @@ const prodCtrl = require('../controllers/products')
 const userCtrl = require('../controllers/User')
 const commCtrl = require('../controllers/comments')
 const sessionCtrl = require('../controllers/sessions')
+const { forwardAuthenticated, ensureAuthenticated } = require('../config/auth')
 
 
 router.get('/', (req, res) => {
@@ -38,9 +39,9 @@ router.put('/Comments/:id', commCtrl.updateComms)
 // User Sub Pages
 // userCtrl -- Alex's Section
 router.get('/Logout/', sessionCtrl.logout)
-router.get('/Users/', userCtrl.indexUser)
+router.get('/Users/', forwardAuthenticated, userCtrl.indexUser)
 router.post('/Users/', sessionCtrl.login)
-router.get('/Users/new', userCtrl.newUser)
+router.get('/Users/new',forwardAuthenticated, userCtrl.newUser)
 router.get('/Users/:id', userCtrl.showUser)
 router.get('/Users/:id/edit', userCtrl.editUser)
 router.post('/Login', userCtrl.addUser)
