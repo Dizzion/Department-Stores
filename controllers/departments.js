@@ -44,13 +44,9 @@ function newDepts(req, res) {
 }
 //  add a new dept to the database
 function addDepts(req, res) {
-    if (req.session.loggedIn) {
-        Depts.create(req.body, (err, addedDept) => {
-            res.redirect('/Store/Depts')
-        })
-    } else {
-        res.redirect('/Store/Users')
-    }
+    Depts.create(req.body, (err, addedDept) => {
+        res.redirect('/Store/Depts')
+    })
 }
 // delete a dept from the database
 function deleteDepts(req, res) {
