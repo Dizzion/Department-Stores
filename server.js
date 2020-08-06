@@ -21,7 +21,7 @@ app.use(ejsLayouts)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(session({
-    secret: process.env.SECRET,
+    secret: process.env.SECRET || 'zV;$0Adh:aoQ]wCBZJY).?xSL@=Vr/>&tS5c7X/UV~W]gJ%[zk6$&4%9jW7cn?{',
     resave: false,
     saveUninitialized: true,
     store: new MongoStore({mongooseConnection: mongoose.connection,
@@ -43,7 +43,7 @@ app.use('/Store', storeRouter)
 
 
 // listen on port 3000
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('Up and Ready to Shop')
 })
 
