@@ -12,7 +12,6 @@ const passport = require('passport')
 const flash = require('connect-flash')
 const cookieParser = require('cookie-parser')
 const MongoStore = require('connect-mongo')(session)
-const router = express.Router()
 
 require('./config/passport')(passport)
 
@@ -25,14 +24,16 @@ app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-    store: new MongoStore({mongooseConnection: mongoose.connection,
-                            ttl: 1 * 24 * 60 * 60})
+    store: new MongoStore({
+        mongooseConnection: mongoose.connection,
+        ttl: 1 * 24 * 60 * 60
+    })
 }))
 app.use(methodOverride('_method'))
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.locals.success_msg = req.flash('success_msg')
     res.locals.error_msg = req.flash('error_msg')
     res.locals.error = req.flash('error')
