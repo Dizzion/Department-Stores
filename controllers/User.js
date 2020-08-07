@@ -115,7 +115,7 @@ function editUser(req, res) {
 
 function updateUser(req, res) {
     User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
-        res.redirect('/Store')
+        res.redirect('/')
     })
 
 }
