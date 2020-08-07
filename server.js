@@ -17,6 +17,7 @@ require('./config/passport')(passport)
 
 // middleware
 app.set('view engine', 'ejs')
+app.set('trust proxy', 1)
 app.use(ejsLayouts)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
@@ -26,8 +27,10 @@ app.use(session({
     saveUninitialized: true,
     store: new MongoStore({
         mongooseConnection: mongoose.connection,
-        ttl: 1 * 24 * 60 * 60
-    })
+        ttl: 1 * 24 * 60 * 60,
+        collection: 'sessions'
+    }),
+    cookie: {secure: true}
 }))
 app.use(methodOverride('_method'))
 app.use(passport.initialize())
