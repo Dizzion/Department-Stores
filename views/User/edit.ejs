@@ -2,7 +2,7 @@
 <h3>Edit Your Account</h3>
     <form action="/Users/<%=user._id%>?_method=PUT" method="POST">
         Username: <input type="text" name="username" value="<%=user.username%>" readonly/><br />
-        Password: <input type="text" name="password" value="<%=user.password%>" required/><br />
+        Password: <input type="text" name="password" value="<%=user.password%>" hidden required/><br />
         Name: <input type="text" name="name" value="<%=user.name%>" required/><br />
         Email: <input type="email" name="email" value="<%=user.email%>" required/><br />
         <input type="submit" name="" value="Submit Changes to Account"/>
